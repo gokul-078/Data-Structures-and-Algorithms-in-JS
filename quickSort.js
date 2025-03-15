@@ -38,3 +38,30 @@ console.log(quickSort(arr));
 
 // The worst case complexity in this sorting method is o(n^2)... because we sort a sorted array...
 // The avg case complexity is 0(nlogn)... because it reduces the array to half in number and sorts...
+
+
+// Another eg:
+/*
+function quickSort(arr) {
+    if(arr.length < 2){
+        return arr;
+    }
+
+    let pivot = arr[0];
+    let leftSide = arr.slice(1).filter(val => val < pivot);
+    let rightSide = arr.slice(1).filter(val => val > pivot);
+
+    let sortedLeft = quickSort(leftSide);
+    let sortedRight = quickSort(rightSide);
+    
+    let sortedArr = [...sortedLeft, pivot, ...sortedRight];
+    
+    console.log(sortedArr.join(" "));
+
+    return sortedArr;
+} 
+
+let arr = [7,3,8,3,0,2,4];
+let finalRes = quickSort(arr);
+console.log(finalRes);
+*/
