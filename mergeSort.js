@@ -35,3 +35,42 @@ console.log(merge(arr));
 //  Here, the Big(o) - o(nlogn)...
 
 
+
+
+// Inplace merge sort...
+
+class Solution {
+    mergeSort(arr, l, r) {
+    if (l >= r) return;
+
+    let mid = Math.floor((l + r) / 2);
+    
+    this.mergeSort(arr, l, mid);
+    this.mergeSort(arr, mid + 1, r);
+    
+    this.merge(arr, l, mid, r);
+}
+
+merge(arr, l, mid, r) {
+    let leftArr = arr.slice(l, mid + 1);
+    let rightArr = arr.slice(mid + 1, r + 1);
+    
+    let i = 0, j = 0, k = l;
+    
+    while (i < leftArr.length && j < rightArr.length) {
+        if (leftArr[i] <= rightArr[j]) {
+            arr[k++] = leftArr[i++];
+        } else {
+            arr[k++] = rightArr[j++];
+        }
+    }
+    
+    while (i < leftArr.length) {
+        arr[k++] = leftArr[i++];
+    }
+
+    while (j < rightArr.length) {
+        arr[k++] = rightArr[j++];
+    }
+}
+}
